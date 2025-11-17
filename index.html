@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANCA Seguros - Especialistas en Autos Clásicos y Motos</title>
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00ea;
+            --neon-purple: #9d00ff;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a2e;
+            --text-light: #ffffff;
+            --text-gray: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(157, 0, 255, 0.1), rgba(0, 243, 255, 0.1));
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(157, 0, 255, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card h3 {
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Bank Discounts Section */
+        .bank-discounts {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 30px rgba(255, 0, 234, 0.2);
+        }
+
+        .bank-discounts h2 {
+            text-align: center;
+            color: var(--neon-pink);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .banks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .bank-logo {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            width: 180px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .bank-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(255, 0, 234, 0.4);
+        }
+
+        .bank-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .discount-text {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.3rem;
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            margin: 4rem 0;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateX(10px);
+            box-shadow: -5px 5px 20px rgba(0, 243, 255, 0.3);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            color: var(--neon-blue);
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-location {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin: 0.5rem 0;
+        }
+
+        /* Quote Form */
+        .quote-section {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            border: 2px solid var(--neon-purple);
+        }
+
+        .quote-section h2 {
+            text-align: center;
+            color: var(--neon-purple);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .quote-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(157, 0, 255, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(157, 0, 255, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+            border-top: 2px solid var(--neon-blue);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--neon-pink);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+            color: var(--text-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="https://i.imgur.com/YourLogoHere.png" alt="ANCA Seguros Logo" class="logo">
+                    <h1>ANCA Seguros</h1>
+                </div>
+                <a href="https://wa.me/5492254123456" class="whatsapp-btn" target="_blank">
+                    📱 Cotizar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Especialistas en Autos Clásicos y Motos</h2>
+            <p>Cubrimos lo que otros rechazan: Autos 70's, 80's, 90's y todas las motos</p>
+            <a href="#cotizacion" class="whatsapp-btn">Solicitar Cotización Gratis</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <h3>Autos Clásicos</h3>
+                <p>Especialistas en vehículos de los años 70, 80 y 90. Cobertura completa para tu auto clásico.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏍️</div>
+                <h3>Todas las Motos</h3>
+                <p>Cualquier marca y cilindrada. Desde motos urbanas hasta deportivas de alta gama.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏠</div>
+                <h3>Hogar y Negocio</h3>
+                <p>Protege tu casa o comercio con coberturas adaptadas a tus necesidades.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Respuesta Inmediata</h3>
+                <p>Atención personalizada por WhatsApp. Cotizaciones en minutos.</p>
+            </div>
+        </section>
+
+        <section class="bank-discounts">
+            <h2>💳 Descuentos Exclusivos por Banco</h2>
+            <div class="banks-grid">
+                <div class="bank-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banco_Galicia_logo.svg/1200px-Banco_Galicia_logo.svg.png" alt="Banco Galicia">
+                </div>
+                <div class="bank-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/BBVA_2019.svg/1200px-BBVA_2019.svg.png" alt="Banco Francés">
+                </div>
+                <div class="bank-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Banco_Nacion.svg/1200px-Banco_Nacion.svg.png" alt="Banco Nación">
+                </div>
+            </div>
+            <p class="discount-text">🎉 10% de descuento abonando con estos bancos</p>
+        </section>
+
+        <section class="testimonials">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MR</div>
+                        <div class="testimonial-info">
+                            <h4>María Rodríguez</h4>
+                            <p class="testimonial-location">📍 Mendoza</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Excelente atención. Aseguraron mi Fiat 128 del '78 sin problemas. En otras compañías me rechazaban."</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">CG</div>
+                        <div class="testimonial-info">
+                            <h4>Carlos González</h4>
+                            <p class="testimonial-location">📍 Córdoba</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Mi moto Yamaha 600cc asegurada al instante. Precio justo y servicio rápido por WhatsApp."</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">LP</div>
+                        <div class="testimonial-info">
+                            <h4>Laura Pérez</h4>
+                            <p class="testimonial-location">📍 Salta</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Contraté seguro de hogar y me sorprendió la cobertura. Muy recomendable."</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">JM</div>
+                        <div class="testimonial-info">
+                            <h4>Jorge Martínez</h4>
+                            <p class="testimonial-location">📍 Buenos Aires</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Tengo mi VW Escarabajo del '85 asegurado. Atención personalizada y buenos precios."</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <h4>Sofía Morales</h4>
+                            <p class="testimonial-location">📍 Tucumán</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Aseguré mi negocio con ANCA. Proceso simple y respuesta inmediata."</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">RA</div>
+                        <div class="testimonial-info">
+                            <h4>Ricardo Álvarez</h4>
+                            <p class="testimonial-location">📍 Santa Fe</p>
+                        </div>
+                    </div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Mi Dodge GTX del '72 finalmente asegurado. Gracias ANCA por la confianza."</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section" id="cotizacion">
+            <h2>📋 Solicita tu Cotización Gratis</h2>
+            <form class="quote-form" id="quoteForm">
+                <div class="form-group">
+                    <label for="tipoSeguro">Tipo de Seguro</label>
+                    <select id="tipoSeguro" name="tipoSeguro" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="auto">Auto</option>
+                        <option value="moto">Moto</option>
+                        <option value="hogar">Hogar</option>
+                        <option value="negocio">Negocio</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="marca">Marca</label>
+                    <input type="text" id="marca" name="marca" placeholder="Ej: Fiat, Honda, etc." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="modelo">Modelo</label>
+                    <input type="text" id="modelo" name="modelo" placeholder="Ej: 128, CBR, etc." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="anio">Año</label>
+                    <input type="number" id="anio" name="anio" placeholder="Ej: 1985" min="1950" max="2024" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cobertura">Tipo de Cobertura</label>
+                    <select id="cobertura" name="cobertura" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="terceros">Responsabilidad Civil (Terceros)</option>
+                        <option value="terceros-completo">Terceros Completo</option>
+                        <option value="todo-riesgo">Todo Riesgo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Tu Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono (WhatsApp)</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 1234-5678" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Solicitud por WhatsApp</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ANCA Seguros</h3>
+                    <p>Especialistas en seguros para vehículos clásicos, motos, hogares y negocios.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank">📘</a>
+                        <a href="#" target="_blank">📷</a>
+                        <a href="https://wa.me/5492254123456" target="_blank">💬</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📱 WhatsApp: +54 9 2254 12-3456</p>
+                    <p>📧 Email: info@ancaseguros.com.ar</p>
+                    <p>📍 Pinamar, Buenos Aires, Argentina</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Horarios</h3>
+                    <p>Lunes a Viernes: 9:00 - 18:00</p>
+                    <p>Sábados: 9:00 - 13:00</p>
+                    <p>Domingos: Cerrado</p>
+                    <p><strong>WhatsApp 24/7</strong></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <p><a href="#">Seguros de Auto</a></p>
+                    <p><a href="#">Seguros de Moto</a></p>
+                    <p><a href="#">Seguros de Hogar</a></p>
+                    <p><a href="#">Seguros de Negocio</a></p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2024 ANCA Seguros. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                tipoSeguro: document.getElementById('tipoSeguro').value,
+                marca: document.getElementById('marca').value,
+                modelo: document.getElementById('modelo').value,
+                anio: document.getElementById('anio').value,
+                cobertura: document.getElementById('cobertura').value,
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value
+            };
+
+            const mensaje = `Hola! Quiero cotizar un seguro:\n\n` +
+                `Tipo: ${formData.tipoSeguro}\n` +
+                `Marca: ${formData.marca}\n` +
+                `Modelo: ${formData.modelo}\n` +
+                `Año: ${formData.anio}\n` +
+                `Cobertura: ${formData.cobertura}\n` +
+                `Nombre: ${formData.nombre}\n` +
+                `Teléfono: ${formData.telefono}`;
+
+            const whatsappURL = `https://wa.me/5492254123456?text=${encodeURIComponent(mensaje)}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
