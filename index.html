@@ -620,15 +620,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cobertura">Tipo de Cobertura</label>
-                    <select id="cobertura" name="cobertura" required>
-                        <option value="">Selecciona una opción</option>
-                        <option value="terceros">Responsabilidad Civil (Terceros)</option>
-                        <option value="terceros-completo">Terceros Completo</option>
-                        <option value="todo-riesgo">Todo Riesgo</option>
-                    </select>
-                </div>
-
+                <label for="cobertura" id="labelCobertura">Tipo de Cobertura</label>
+                <select id="cobertura" name="cobertura" required>
+                    <option value="">Selecciona una opción</option>
+                    <!-- Las opciones se cargarán dinámicamente -->
+                </select>
+            </div>
                 <div class="form-group">
                     <label for="nombre">Tu Nombre</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
@@ -727,3 +724,63 @@
     </script>
 </body>
 </html>
+
+
+        // Manejo dinámico de coberturas según tipo de seguro
+        const tipoSeguro = document.getElementById('tipoSeguro');
+        const cobertura = document.getElementById('cobertura');
+        const labelCobertura = document.getElementById('labelCobertura');
+
+        // Definir coberturas por tipo
+        const coberturasPorTipo = {
+            auto: [
+                { value: 'terceros', text: 'Responsabilidad Civil (Terceros)' },
+                { value: 'terceros-completo', text: 'Terceros Completo (con robo e incendio)' },
+                { value: 'todo-riesgo', text: 'Todo Riesgo' },
+                { value: 'todo-riesgo-premium', text: 'Todo Riesgo Premium' }
+            ],
+            moto: [
+                { value: 'terceros', text: 'Responsabilidad Civil (Terceros)' },
+                { value: 'terceros-completo', text: 'Terceros Completo (con robo e incendio)' },
+                { value: 'todo-riesgo', text: 'Todo Riesgo' }
+            ],
+            hogar: [
+                { value: 'basica', text: 'Cobertura Básica' },
+                { value: 'completa', text: 'Cobertura Completa' },
+                { value: 'premium', text: 'Cobertura Premium' }
+            ],
+            negocio: [
+                { value: 'basica', text: 'Cobertura Básica' },
+                { value: 'completa', text: 'Cobertura Completa' },
+                { value: 'integral', text: 'Cobertura Integral' }
+            ]
+        };
+
+        // Función para actualizar coberturas
+        function actualizarCoberturas() {
+            const tipo = tipoSeguro.value;
+            
+            // Limpiar opciones actuales
+            cobertura.innerHTML = '<option value="">Selecciona una opción</option>';
+            
+            // Actualizar label
+            if (tipo && tipo !== '') {
+                const nombreTipo = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+                labelCobertura.textContent = `Tipo de Cobertura (${nombreTipo})`;
+                
+                // Agregar opciones específicas
+                if (coberturasPorTipo[tipo]) {
+                    coberturasPorTipo[tipo].forEach(cob => {
+                        const option = document.createElement('option');
+                        option.value = cob.value;
+                        option.textContent = cob.text;
+                        cobertura.appendChild(option);
+                    });
+                }
+            } else {
+                labelCobertura.textContent = 'Tipo de Cobertura';
+            }
+        }
+
+        // Agregar listener al cambio de tipo de seguro
+        tipoSeguro.addEventListener('change', actualizarCoberturas);
