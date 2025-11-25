@@ -471,8 +471,18 @@
     <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; flex-wrap: wrap; gap: 15px;">
       <div style="display: flex; align-items: center; gap: 20px;">
         <img src="./Logo de ANCA Seguros SIN FONDO.png" alt="ANCA Seguros Logo" style="height: 80px; filter: drop-shadow(0 0 12px #00cfff); border-radius: 8px;">
-        <h1 style="color: #00cfff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 3px; margin: 0; font-size: 2.5em; text-shadow: 0 0 15px rgba(0, 207, 255, 0.8);">ANCA Seguros</h1>
-      </div>
+            <!-- ANCA Seguros con efecto de partículas -->
+            <div id="logo-anca" style="position: relative; display: inline-block;">
+              <h1 
+                id="anca-seguros-text" 
+                style="color: #00cfff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 3px; margin: 0; font-size: 2.5em; text-shadow: 0 0 15px rgba(0, 207, 255, 0.8); position: relative; z-index:2;"
+              >
+                ANCA Seguros
+              </h1>
+              <div id="particles-anca" 
+                   style="pointer-events:none; position: absolute; top:0; left:0; width:100%; height:100%; z-index:1; display:none;">
+              </div>
+            </div>      </div>
       <a href="https://wa.me/5492236669548" target="_blank" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: all 0.3s ease;">📱 Cotizar por WhatsApp</a>
     </div>
   </header>
@@ -735,6 +745,41 @@
                 }
             });
         });
+    </script>
+
+        <!-- Efecto de partículas on hover ANCA Seguros -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+    let particlesLoaded = false;
+    const textEl = document.getElementById('anca-seguros-text');
+    const particlesEl = document.getElementById('particles-anca');
+
+    textEl.addEventListener('mouseenter', function() {
+      particlesEl.style.display = 'block';
+      if (!particlesLoaded) {
+        particlesJS('particles-anca', {
+          particles: {
+            number: {value: 30, density: {enable: true, value_area: 200}},
+            color: {value: "#00cfff"},
+            size: {value: 3, random: true},
+            shape: {type: "circle"},
+            opacity: {value: .7},
+            line_linked: {enable: false}
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: {enable: false},
+              onclick: {enable: false}
+            }
+          }
+        });
+        particlesLoaded = true;
+      }
+    });
+    textEl.addEventListener('mouseleave', function() {
+      particlesEl.style.display = 'none';
+    });
     </script>
 </body>
 </html>
